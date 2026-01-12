@@ -1,0 +1,32 @@
+﻿@model TrainerCreateVM
+<div class="d-flex flex-column m-4 w-100">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" class="form-control">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">Description</label>
+            <input asp-for="Description" class="form-control">
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImagePath">Image</label>
+            <input asp-for="ImagePath" class="form-control">
+            <span asp-validation-for="ImagePath" class="text-danger"></span>
+        </div>
+
+        <select asp-for="BranchId">
+            @foreach (Branch branch in ViewBag.Branches)
+            {
+                <option value="@branch.Id">@branch.Name</option>
+            }
+        </select>
+
+        <div class="d-flex m-2 gap-2">
+            <a asp-action="Index" asp-controller="Trainer" asp-area="Admin" class="btn btn-danger">Cancel</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>

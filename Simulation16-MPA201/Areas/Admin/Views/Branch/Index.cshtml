@@ -1,0 +1,28 @@
+﻿@model List<Branch>
+<div class="d-flex flex-column m-4 w-100">
+    <a asp-action="Create" asp-controller="Branch" asp-area="Admin" class="btn btn-warning">Create New Branch</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var branch in Model)
+            {
+                <tr>
+                    <th scope="row">@branch.Id</th>
+                    <td>@branch.Name</td>
+                    <td>
+                        <a asp-action="Update" asp-controller="Branch" asp-area="Admin" asp-route-id="@branch.Id" class="btn btn-primary">Update</a>
+                        <a asp-action="Delete" asp-controller="Branch" asp-area="Admin" asp-route-id="@branch.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
