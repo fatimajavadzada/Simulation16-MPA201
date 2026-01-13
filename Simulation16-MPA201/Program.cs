@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Simulation16_MPA201.Contexts;
+using Simulation16_MPA201.Models;
 
 namespace Simulation16_MPA201
 {
@@ -15,6 +17,12 @@ namespace Simulation16_MPA201
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
             });
+
+            builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+            {
+
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
 
             var app = builder.Build();
 
